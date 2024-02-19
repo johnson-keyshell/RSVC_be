@@ -1,0 +1,16 @@
+version: '3'
+services:
+  backend:
+    image: rsvc-backend-dev
+    container_name: rsvc-backend-dev
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/app/
+      - /usr/app/node_modules
+      - ../rsvc_fe/build:/usr/app/build/
+    env_file:
+      - .env
+    restart: always
+    network_mode: host
